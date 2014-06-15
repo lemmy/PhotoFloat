@@ -79,6 +79,10 @@ When you're done, fill albums with photos and directories of photos. You can als
 
 After it finishes, you will be all set. Simply have your web server serve pages out of your web directory. You may want to do the scanning step in a cronjob, if you don't use the deployment makefiles mentioned below.
 
+Additionally, I had to create symlinks that prefix the thumbnail files with "root-" in the cache folder. The generated site (Javascript) apparently expect this.
+
+    $ cd ../web/cache/ && for f in *.jpg; do ln -s $f root-${f}; done
+
 ## Optional: Server-side Authentication
 
 The JavaScript application uses a very simple API to determine if a photo can be viewed or not. If a JSON file returns error `403`, the album is hidden from view. To authenticate, `POST` a username and a password to `/auth`. If unsuccessful, `403` is returned. If successful, `200` is returned, and the previously denied json files may now be requested. If an unauthorized album is directly requested in a URL when the page loads, an authentication box is shown.
