@@ -1,0 +1,5 @@
+* Add (new) images to web/albums
+* Optionally shrink image's size
+* Regenarate via scanner/main.py ../web/albums ../web/cache
+* Copy web to personal/blog/89AA3E
+* Remove js/ & css/ input files
